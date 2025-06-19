@@ -1,38 +1,313 @@
-.App {
+/* Navbar Özel Stilleri */
+.navbar {
+  transition: all 0.3s ease;
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled {
+  padding: 10px 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: translateY(-2px);
+}
+
+.custom-nav-link {
+  position: relative;
+  margin: 0 5px;
+  padding: 8px 15px !important;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.custom-nav-link:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.custom-nav-link:hover:before,
+.custom-nav-link.active:before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.custom-nav-link:hover {
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-nav-link.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-btn {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Genel Stiller */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar Stiller */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Stiller */
+footer {
+  margin-top: 2rem;
+  padding: 2rem 0;
+}
+
+/* Ana Sayfa Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  margin-bottom: 3rem;
+  padding: 3rem 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.hero-section h1 {
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+}
+
+/* Ürün Kartı Stiller */
+.card {
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-price {
+  color: #e53e3e;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* Ürün Detay Sayfası */
+.product-detail-image {
+  max-height: 400px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.product-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.product-price {
+  font-size: 1.75rem;
+  color: #e53e3e;
+  margin-bottom: 1.5rem;
+}
+
+.product-description {
+  margin-bottom: 2rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.product-specs {
+  background-color: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.product-specs h4 {
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.product-specs ul {
+  padding-left: 1.5rem;
+}
+
+.product-specs li {
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+}
+
+/* Sepet Sayfası */
+.cart-page {
+  margin-bottom: 3rem;
+}
+
+.cart-items-container {
+  margin-bottom: 2rem;
+}
+
+.cart-item {
+  vertical-align: middle;
+}
+
+.cart-item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.cart-summary {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.empty-cart-container {
+  padding: 3rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.empty-cart-icon {
+  font-size: 5rem;
+  color: #cbd5e0;
+  margin-bottom: 1.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Hakkımızda Sayfası */
+.team-member img {
+  transition: transform 0.3s ease;
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.team-member img:hover {
+  transform: scale(1.05);
+}
+
+/* İletişim Sayfası */
+.contact-info i {
+  margin-right: 10px;
+  color: #3182ce;
+}
+
+/* Animasyonlar */
+.section-title {
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #3182ce;
+}
+
+.feature-item {
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+}
+
+.feature-icon {
+  color: #3182ce;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Ayarlamalar */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  h2 {
+    font-size: 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .hero-section {
+    padding: 2rem 0;
+  }
+  
+  .product-title {
+    font-size: 1.5rem;
+  }
+  
+  .product-price {
+    font-size: 1.25rem;
+  }
+  
+  .custom-nav-link {
+    margin: 5px 0;
   }
 }
