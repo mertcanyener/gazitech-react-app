@@ -1,25 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  // Sayfa scroll edildiğinde navbar'ın görünümünü değiştir
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <nav className={`navbar navbar-expand-lg navbar-dark ${scrolled ? 'bg-dark scrolled' : 'bg-dark'}`}>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-burgundy">
       <div className="container">
         <Link className="navbar-brand" to="/">
           <i className="bi bi-cpu me-2"></i>

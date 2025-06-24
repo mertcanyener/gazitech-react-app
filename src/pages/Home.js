@@ -31,7 +31,7 @@ function Home() {
       </div>
 
       <section className="my-5 featured-products">
-        <h2 className="text-center mb-4 section-title">Öne Çıkan Ürünler</h2>
+        <h2 className="text-center mb-4 featured-title">Öne Çıkan Ürünler</h2>
         <div className="row">
           {featuredProducts.map(product => (
             <div className="col-md-4 mb-4" key={product.id}>

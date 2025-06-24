@@ -7,8 +7,7 @@ function Products() {
   const [sortBy, setSortBy] = useState('default');
   const [categoryFilter, setCategoryFilter] = useState('');
   
-  // Tüm kategorileri al ve Türkçe karşılıklarını ekle
-  const categories = [...new Set(products.map(product => product.category))];
+  // Türkçe kategori karşılıkları
   const categoryNames = {
     'iphone15series': 'iPhone 15 Serisi',
     'iphone16series': 'iPhone 16 Serisi',
