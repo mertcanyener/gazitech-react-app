@@ -3,142 +3,139 @@ import ProductCard from '../components/ProductCard';
 import products from '../data/products';
 
 function Products() {
-  const [filter, setFilter] = useState('');
-  const [sortBy, setSortBy] = useState('default');
-  const [categoryFilter, setCategoryFilter] = useState('');
-  
-  // Türkçe kategori karşılıkları
-  const categoryNames = {
-    'iphone15series': 'iPhone 15 Serisi',
-    'iphone16series': 'iPhone 16 Serisi',
-    'ipad': 'iPad',
-    'macbook': 'MacBook',
-    'watch': 'Apple Watch',
-    'airpods': 'AirPods',
-    'accessory': 'Aksesuarlar'
-  };
-  
-  // Kategori sıralaması
-  const categoryOrder = [
-    'iphone16series',
-    'iphone15series',
-    'ipad',
-    'macbook',
-    'watch',
-    'airpods',
-    'accessory'
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  // Yeni kategori yapısı - ürün türlerine göre ayrıştırılmış
+  const categories = [
+    { id: 'all', name: 'Tüm Ürünler', icon: 'bi-grid-3x3-gap' },
+    { id: 'smartphone', name: 'Akıllı Telefon', icon: 'bi-phone' },
+    { id: 'tablet', name: 'Tablet', icon: 'bi-tablet' },
+    { id: 'laptop', name: 'Laptop', icon: 'bi-laptop' },
+    { id: 'smartwatch', name: 'Akıllı Saat', icon: 'bi-smartwatch' },
+    { id: 'headphones', name: 'Kulaklık', icon: 'bi-headphones' },
+    { id: 'accessories', name: 'Aksesuarlar', icon: 'bi-collection' }
   ];
-  
-  // Filtreleme ve sıralama
-  const filteredProducts = products.filter(product => 
-    (product.name.toLowerCase().includes(filter.toLowerCase()) ||
-    product.description.toLowerCase().includes(filter.toLowerCase())) &&
-    (categoryFilter === '' || product.category === categoryFilter)
-  );
-  
-  // Sıralama
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sortBy === 'price-asc') {
-      return a.price - b.price;
-    } else if (sortBy === 'price-desc') {
-      return b.price - a.price;
-    } else if (sortBy === 'name-asc') {
-      return a.name.localeCompare(b.name);
-    } else if (sortBy === 'name-desc') {
-      return b.name.localeCompare(a.name);
-    }
-    return 0;
-  });
-  
-  const handleFilterChange = (e) => {
-    setFilter(e.target.value);
+
+  // Kategori eşleştirme - mevcut ürün kategorilerini yeni kategorilere eşleştir
+  const categoryMapping = {
+    'iphone15series': 'smartphone',    // iPhone 15 serisi → Akıllı Telefon
+    'iphone16series': 'smartphone',    // iPhone 16 serisi → Akıllı Telefon
+    'ipad': 'tablet',                  // iPad serisi → Tablet
+    'macbook': 'laptop',               // MacBook serisi → Laptop
+    'watch': 'smartwatch',             // Apple Watch → Akıllı Saat
+    'airpods': 'headphones',           // AirPods → Kulaklık
+    'accessory': 'accessories'         // Gerçek aksesuarlar → Aksesuarlar
   };
   
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
+  // Filtreleme fonksiyonu
+  const filteredProducts = products.filter(product => {
+    // Arama terimi kontrolü
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         product.description.toLowerCase().includes(searchTerm.toLowerCase());
+
+    // Kategori kontrolü
+    const productMappedCategory = categoryMapping[product.category] || 'accessories';
+    const matchesCategory = selectedCategory === 'all' || productMappedCategory === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
   };
 
-  const handleCategoryChange = (e) => {
-    setCategoryFilter(e.target.value);
+  const handleCategorySelect = (categoryId) => {
+    setSelectedCategory(categoryId);
   };
 
   return (
-    <div>
-      <h1 className="mb-4">Ürünlerimiz</h1>
-      
-      <div className="row mb-4">
-        <div className="col-md-4 mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Ürün ara..."
-            value={filter}
-            onChange={handleFilterChange}
-          />
-        </div>
-        <div className="col-md-4 mb-3">
-          <select
-            className="form-select"
-            value={categoryFilter}
-            onChange={handleCategoryChange}
-          >
-            <option value="">Tüm Kategoriler</option>
-            {categoryOrder.map(category => (
-              <option key={category} value={category}>
-                {categoryNames[category] || category}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="col-md-4 mb-3">
-          <select
-            className="form-select"
-            value={sortBy}
-            onChange={handleSortChange}
-          >
-            <option value="default">Sıralama</option>
-            <option value="price-asc">Fiyat (Düşükten Yüksek)</option>
-            <option value="price-desc">Fiyat (Yüksekten Düşük)</option>
-            <option value="name-asc">İsim (A-Z)</option>
-            <option value="name-desc">İsim (Z-A)</option>
-          </select>
+    <div className="products-page">
+      {/* Başlık ve Açıklama */}
+      <div className="text-center mb-5">
+        <h1 className="display-4 fw-bold text-burgundy mb-3">Ürün Kataloğumuz</h1>
+        <p className="lead text-muted">
+          Teknolojinin en yeni ürünlerini keşfedin. Mağazamızda incelemek için bizimle iletişime geçin.
+        </p>
+      </div>
+
+      {/* Arama Kutusu */}
+      <div className="row justify-content-center mb-4">
+        <div className="col-lg-6 col-md-8">
+          <div className="search-box position-relative">
+            <input
+              type="text"
+              className="form-control form-control-lg ps-5"
+              placeholder="Ürün ismine göre ara..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+            <i className="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+          </div>
         </div>
       </div>
-      
-      {/* Kategori başlıkları ile ürünleri göster */}
-      {categoryFilter === '' ? (
-        categoryOrder.map(category => {
-          const categoryProducts = sortedProducts.filter(product => product.category === category);
-          if (categoryProducts.length === 0) return null;
-          
-          return (
-            <div key={category} className="mb-5">
-              <h2 className="mb-4 category-title">
-                {categoryNames[category] || category}
-              </h2>
-              <div className="row">
-                {categoryProducts.map(product => (
-                  <div className="col-md-4 mb-4" key={product.id}>
-                    <ProductCard product={product} />
-                  </div>
-                ))}
-              </div>
+
+      {/* Kategori Filtreleri */}
+      <div className="category-filters mb-5">
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <div className="d-flex flex-wrap justify-content-center gap-2">
+              {categories.map(category => (
+                <button
+                  key={category.id}
+                  className={`btn category-btn ${selectedCategory === category.id ? 'active' : ''}`}
+                  onClick={() => handleCategorySelect(category.id)}
+                >
+                  <i className={`${category.icon} me-2`}></i>
+                  {category.name}
+                </button>
+              ))}
             </div>
-          );
-        })
-      ) : (
-        <div className="row">
-          {sortedProducts.length > 0 ? (
-            sortedProducts.map(product => (
-              <div className="col-md-4 mb-4" key={product.id}>
+          </div>
+        </div>
+      </div>
+
+      {/* Ürün Sonuçları */}
+      <div className="products-grid">
+        {filteredProducts.length > 0 ? (
+          <div className="row g-4">
+            {filteredProducts.map(product => (
+              <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6" key={product.id}>
                 <ProductCard product={product} />
               </div>
-            ))
-          ) : (
-            <div className="col-12 text-center py-5">
-              <p>Aradığınız kriterlere uygun ürün bulunamadı.</p>
+            ))}
+          </div>
+        ) : (
+          <div className="no-products text-center py-5">
+            <div className="mb-4">
+              <i className="bi bi-search text-muted" style={{fontSize: '4rem'}}></i>
             </div>
-          )}
+            <h4 className="text-muted mb-3">Ürün Bulunamadı</h4>
+            <p className="text-muted">
+              {searchTerm ?
+                `"${searchTerm}" aramanız için sonuç bulunamadı.` :
+                'Bu kategoride henüz ürün bulunmuyor.'
+              }
+            </p>
+            <button
+              className="btn btn-outline-burgundy"
+              onClick={() => {
+                setSearchTerm('');
+                setSelectedCategory('all');
+              }}
+            >
+              Tüm Ürünleri Göster
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Ürün Sayısı Bilgisi */}
+      {filteredProducts.length > 0 && (
+        <div className="text-center mt-4">
+          <small className="text-muted">
+            Toplam {filteredProducts.length} ürün gösteriliyor
+          </small>
         </div>
       )}
     </div>

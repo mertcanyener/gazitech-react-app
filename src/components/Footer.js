@@ -22,6 +22,14 @@ function Footer() {
           </div>
         </div>
         <hr />
+        <div className="text-center mb-3">
+          <Link to="/vision-mission" className="text-decoration-none text-muted me-3">
+            <i className="bi bi-eye me-1"></i>Vizyon Misyon
+          </Link>
+          <Link to="/contact" className="text-decoration-none text-muted">
+            <i className="bi bi-envelope me-1"></i>İletişim
+          </Link>
+        </div>
         <div className="text-center text-muted">
           <small>&copy; {new Date().getFullYear()} GaziTech. Tüm hakları saklıdır. | En yeni teknoloji ürünleri için güvenilir adresiniz.</small>
         </div>

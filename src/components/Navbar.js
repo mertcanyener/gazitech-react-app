@@ -49,12 +49,25 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item mx-1">
-              <NavLink 
-                className={({isActive}) => 
-                  isActive 
-                    ? "nav-link custom-nav-link active" 
+              <NavLink
+                className={({isActive}) =>
+                  isActive
+                    ? "nav-link custom-nav-link active"
                     : "nav-link custom-nav-link"
-                } 
+                }
+                to="/vision-mission"
+              >
+                <i className="bi bi-eye me-1"></i>
+                Vizyon Misyon
+              </NavLink>
+            </li>
+            <li className="nav-item mx-1">
+              <NavLink
+                className={({isActive}) =>
+                  isActive
+                    ? "nav-link custom-nav-link active"
+                    : "nav-link custom-nav-link"
+                }
                 to="/contact"
               >
                 <i className="bi bi-envelope me-1"></i>
