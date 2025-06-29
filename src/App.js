@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
@@ -12,8 +13,9 @@ import VisionMission from './pages/VisionMission';
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />
       <Navbar />
-      
+
       <main className="container my-4">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,7 +25,7 @@ function App() {
           <Route path="/vision-mission" element={<VisionMission />} />
         </Routes>
       </main>
-      
+
       <Footer />
     </div>
   );

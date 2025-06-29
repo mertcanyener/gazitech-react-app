@@ -4,6 +4,10 @@ import ProductCard from '../components/ProductCard';
 import products from '../data/products';
 
 function Home() {
+  // Scroll pozisyonunu sıfırla
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   // Öne çıkan ürünler - belirli ürünleri göster
   const featuredProductIds = ['iphone16promax', 'airpodsprogen2', '20w_power_adapter'];
   const featuredProducts = products.filter(product => featuredProductIds.includes(product.id));
@@ -16,7 +20,7 @@ function Home() {
             <div className="col-md-6">
               <h1 className="display-4 fw-bold">GaziTech'e Hoş Geldiniz</h1>
               <p className="lead">En yeni teknoloji ürünleri ve aksesuarları burada!</p>
-              <Link to="/products" className="btn btn-burgundy btn-lg">Ürünleri Keşfet</Link>
+              <Link to="/products" className="btn btn-burgundy btn-lg" onClick={handleLinkClick}>Ürünleri Keşfet</Link>
             </div>
             <div className="col-md-6 d-none d-md-block">
               <img 
@@ -40,7 +44,7 @@ function Home() {
           ))}
         </div>
         <div className="text-center mt-4">
-          <Link to="/products" className="btn btn-outline-primary">Tüm Ürünleri Gör</Link>
+          <Link to="/products" className="btn btn-outline-primary" onClick={handleLinkClick}>Tüm Ürünleri Gör</Link>
         </div>
       </section>
 

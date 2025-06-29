@@ -14,6 +14,11 @@ function ProductCard({ product }) {
     return `https://wa.me/905338448804?text=${encodeURIComponent(message)}`;
   };
 
+  // Scroll pozisyonunu sıfırla
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="modern-product-card">
       <div className="product-image-container">
@@ -31,6 +36,7 @@ function ProductCard({ product }) {
               to={`/products/${product.id}`}
               className="btn btn-light btn-sm me-2"
               title="Detayları Gör"
+              onClick={handleLinkClick}
             >
               <i className="bi bi-eye"></i>
             </Link>
@@ -58,6 +64,7 @@ function ProductCard({ product }) {
             <Link
               to={`/products/${product.id}`}
               className="btn btn-outline-burgundy btn-sm"
+              onClick={handleLinkClick}
             >
               Detayları Gör
             </Link>

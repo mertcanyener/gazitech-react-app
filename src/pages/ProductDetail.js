@@ -6,10 +6,15 @@ function ProductDetail() {
   const { id } = useParams();
   const product = products.find(p => p.id === id);
 
+  // Scroll pozisyonunu sıfırla
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   if (!product) {
     return (
       <div className="alert alert-warning" role="alert">
-        Ürün bulunamadı. <Link to="/products">Tüm ürünlere dön</Link>
+        Ürün bulunamadı. <Link to="/products" onClick={handleLinkClick}>Tüm ürünlere dön</Link>
       </div>
     );
   }
@@ -61,7 +66,7 @@ function ProductDetail() {
             </div>
           </div>
           
-          <Link to="/products" className="btn btn-outline-secondary">
+          <Link to="/products" className="btn btn-outline-secondary" onClick={handleLinkClick}>
             <i className="bi bi-arrow-left me-2"></i>
             Ürünlere Dön
           </Link>
@@ -99,6 +104,7 @@ function ProductDetail() {
                       <Link
                         to={`/products/${p.id}`}
                         className="btn btn-outline-burgundy btn-sm w-100"
+                        onClick={handleLinkClick}
                       >
                         <i className="bi bi-eye me-1"></i>
                         Detayları Gör
