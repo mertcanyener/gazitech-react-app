@@ -6,6 +6,11 @@ function Products() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
+  // Scroll pozisyonunu sıfırla
+  const handleScrollReset = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   // Yeni kategori yapısı - ürün türlerine göre ayrıştırılmış
   const categories = [
     { id: 'all', name: 'Tüm Ürünler', icon: 'bi-grid-3x3-gap' },
@@ -122,6 +127,7 @@ function Products() {
               onClick={() => {
                 setSearchTerm('');
                 setSelectedCategory('all');
+                handleScrollReset();
               }}
             >
               Tüm Ürünleri Göster
