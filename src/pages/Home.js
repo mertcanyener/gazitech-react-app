@@ -16,7 +16,7 @@ function Home() {
             <div className="col-md-6">
               <h1 className="display-4 fw-bold">GaziTech'e Hoş Geldiniz</h1>
               <p className="lead">En yeni teknoloji ürünleri ve aksesuarları burada!</p>
-              <Link to="/products" className="btn btn-primary btn-lg">Ürünleri Keşfet</Link>
+              <Link to="/products" className="btn btn-burgundy btn-lg">Ürünleri Keşfet</Link>
             </div>
             <div className="col-md-6 d-none d-md-block">
               <img 

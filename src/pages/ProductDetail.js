@@ -69,37 +69,40 @@ function ProductDetail() {
       </div>
       
       <div className="mt-5">
-        <h3>Benzer Ürünler</h3>
+        <h3 className="mb-4">Benzer Ürünler</h3>
         <div className="row">
           {products
             .filter(p => p.id !== product.id && p.category === product.category)
-            .slice(0, 2)
+            .slice(0, 4)
             .map(p => (
-              <div className="col-md-6 mb-4" key={p.id}>
-                <div className="card h-100">
-                  <div className="row g-0">
-                    <div className="col-md-4">
-                      <img
-                        src={p.image || 'https://via.placeholder.com/150x150?text=Ürün+Görseli'}
-                        className="img-fluid rounded-start h-100"
-                        alt={p.name}
-                        style={{
-                          objectFit: 'contain',
-                          background: 'white',
-                          padding: '10px'
-                        }}
-                        onError={(e) => {
-                          e.target.src = 'https://via.placeholder.com/150x150?text=Ürün+Görseli';
-                        }}
-                      />
-                    </div>
-                    <div className="col-md-8">
-                      <div className="card-body">
-                        <h5 className="card-title">{p.name}</h5>
-                        <Link to={`/products/${p.id}`} className="btn btn-sm btn-outline-primary">
-                          Detayları Gör
-                        </Link>
-                      </div>
+              <div className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" key={p.id}>
+                <div className="card h-100 similar-product-card">
+                  <div className="similar-product-image">
+                    <img
+                      src={p.image || 'https://via.placeholder.com/200x200?text=Ürün+Görseli'}
+                      className="card-img-top"
+                      alt={p.name}
+                      style={{
+                        objectFit: 'contain',
+                        background: 'white',
+                        padding: '15px',
+                        height: '200px'
+                      }}
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/200x200?text=Ürün+Görseli';
+                      }}
+                    />
+                  </div>
+                  <div className="card-body d-flex flex-column">
+                    <h6 className="card-title mb-3">{p.name}</h6>
+                    <div className="mt-auto">
+                      <Link
+                        to={`/products/${p.id}`}
+                        className="btn btn-outline-burgundy btn-sm w-100"
+                      >
+                        <i className="bi bi-eye me-1"></i>
+                        Detayları Gör
+                      </Link>
                     </div>
                   </div>
                 </div>
