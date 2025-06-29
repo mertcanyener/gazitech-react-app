@@ -20,7 +20,10 @@ function Home() {
             <div className="col-md-6">
               <h1 className="display-4 fw-bold">GaziTech'e Hoş Geldiniz</h1>
               <p className="lead">En yeni teknoloji ürünleri ve aksesuarları burada!</p>
-              <Link to="/products" className="btn btn-burgundy btn-lg" onClick={handleLinkClick}>Ürünleri Keşfet</Link>
+              <Link to="/products" className="btn btn-burgundy btn-lg btn-shimmer btn-pulse" onClick={handleLinkClick}>
+                <i className="bi bi-grid me-2"></i>
+                Ürünleri Keşfet
+              </Link>
             </div>
             <div className="col-md-6 d-none d-md-block">
               <img 
@@ -44,7 +47,10 @@ function Home() {
           ))}
         </div>
         <div className="text-center mt-4">
-          <Link to="/products" className="btn btn-outline-primary" onClick={handleLinkClick}>Tüm Ürünleri Gör</Link>
+          <Link to="/products" className="btn btn-outline-primary btn-shimmer" onClick={handleLinkClick}>
+            <i className="bi bi-arrow-right me-2"></i>
+            Tüm Ürünleri Gör
+          </Link>
         </div>
       </section>
 

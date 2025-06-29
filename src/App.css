@@ -373,6 +373,243 @@ p {
   background: #600018;
 }
 
+/* ===== MODERN BUTON STİLLERİ ===== */
+
+/* Temel Buton Stilleri */
+.btn {
+  position: relative;
+  overflow: hidden;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  text-decoration: none !important;
+}
+
+/* Bordo Buton - Ana CTA */
+.btn-burgundy {
+  background: linear-gradient(135deg, #7B1E3D 0%, #9A2F50 100%);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.btn-burgundy:hover {
+  background: linear-gradient(135deg, #9A2F50 0%, #B8405E 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(123, 30, 61, 0.4);
+  color: white;
+}
+
+.btn-burgundy:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(123, 30, 61, 0.3);
+}
+
+/* Outline Bordo Buton */
+.btn-outline-burgundy {
+  background: transparent;
+  color: #7B1E3D;
+  border: 2px solid #7B1E3D;
+  position: relative;
+}
+
+.btn-outline-burgundy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #7B1E3D 0%, #9A2F50 100%);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.btn-outline-burgundy:hover {
+  color: white;
+  border-color: #9A2F50;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(123, 30, 61, 0.3);
+}
+
+.btn-outline-burgundy:hover::before {
+  left: 0;
+}
+
+.btn-outline-burgundy:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* İkon Animasyonları */
+.btn i {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn:hover i.bi-eye {
+  transform: scale(1.2);
+}
+
+.btn:hover i.bi-arrow-left {
+  transform: translateX(-3px);
+}
+
+.btn:hover i.bi-arrow-right {
+  transform: translateX(3px);
+}
+
+.btn:hover i.bi-whatsapp {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.btn:hover i.bi-shop {
+  transform: translateY(-2px);
+}
+
+.btn:hover i.bi-telephone {
+  animation: ring 0.6s ease-in-out;
+}
+
+@keyframes ring {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+/* Shimmer Efekti */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.btn-shimmer:hover::after {
+  left: 100%;
+}
+
+/* Özel Buton Türleri */
+
+/* WhatsApp Butonu */
+.btn-success {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  border: none;
+  color: white;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  color: white;
+}
+
+/* Mavi Butonlar */
+.btn-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+}
+
+/* Gri Outline Butonlar */
+.btn-outline-secondary {
+  border: 2px solid #6c757d;
+  color: #6c757d;
+  background: transparent;
+  position: relative;
+}
+
+.btn-outline-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.btn-outline-secondary:hover {
+  color: white;
+  border-color: #5a6268;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(108, 117, 125, 0.3);
+}
+
+.btn-outline-secondary:hover::before {
+  left: 0;
+}
+
+/* Açık Renkli Butonlar */
+.btn-light {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.btn-light:hover {
+  background: white;
+  color: #333;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Pulse Animasyonu */
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(123, 30, 61, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(123, 30, 61, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(123, 30, 61, 0);
+  }
+}
+
+/* Buton Boyutları */
+.btn-sm {
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  border-radius: 6px;
+}
+
+.btn-lg {
+  padding: 12px 32px;
+  font-size: 1.125rem;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
 /* İletişim Sayfası Stilleri */
 .contact-page {
   padding: 2rem 0;
@@ -976,23 +1213,53 @@ footer {
   padding: 12px 20px;
   border-radius: 50px;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #7B1E3D 0%, #9A2F50 100%);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
 .category-btn:hover {
-  border-color: #800020;
-  color: #800020;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-color: #7B1E3D;
+  color: white;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(123, 30, 61, 0.3);
+}
+
+.category-btn:hover::before {
+  left: 0;
 }
 
 .category-btn.active {
-  background-color: #800020;
-  border-color: #800020;
+  background: linear-gradient(135deg, #7B1E3D, #9A2F50);
+  border-color: #7B1E3D;
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(128, 0, 32, 0.3);
+  box-shadow: 0 8px 25px rgba(123, 30, 61, 0.4);
+}
+
+.category-btn.active::before {
+  left: 0;
+}
+
+.category-btn i {
+  transition: transform 0.3s ease;
+}
+
+.category-btn:hover i {
+  transform: scale(1.1);
 }
 
 /* Modern Ürün Kartları */

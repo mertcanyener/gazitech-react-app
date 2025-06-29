@@ -14,7 +14,10 @@ function ProductDetail() {
   if (!product) {
     return (
       <div className="alert alert-warning" role="alert">
-        Ürün bulunamadı. <Link to="/products" onClick={handleLinkClick}>Tüm ürünlere dön</Link>
+        Ürün bulunamadı. <Link to="/products" className="btn btn-outline-burgundy btn-sm btn-shimmer" onClick={handleLinkClick}>
+          <i className="bi bi-arrow-left me-1"></i>
+          Tüm ürünlere dön
+        </Link>
       </div>
     );
   }
@@ -66,7 +69,7 @@ function ProductDetail() {
             </div>
           </div>
           
-          <Link to="/products" className="btn btn-outline-secondary" onClick={handleLinkClick}>
+          <Link to="/products" className="btn btn-outline-secondary btn-shimmer" onClick={handleLinkClick}>
             <i className="bi bi-arrow-left me-2"></i>
             Ürünlere Dön
           </Link>
@@ -103,7 +106,7 @@ function ProductDetail() {
                     <div className="mt-auto">
                       <Link
                         to={`/products/${p.id}`}
-                        className="btn btn-outline-burgundy btn-sm w-100"
+                        className="btn btn-outline-burgundy btn-sm w-100 btn-shimmer"
                         onClick={handleLinkClick}
                       >
                         <i className="bi bi-eye me-1"></i>

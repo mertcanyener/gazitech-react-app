@@ -34,20 +34,22 @@ function ProductCard({ product }) {
           <div className="product-actions">
             <Link
               to={`/products/${product.id}`}
-              className="btn btn-light btn-sm me-2"
+              className="btn btn-light btn-sm me-2 btn-shimmer"
               title="Detayları Gör"
               onClick={handleLinkClick}
             >
-              <i className="bi bi-eye"></i>
+              <i className="bi bi-eye me-1"></i>
+              <span className="d-none d-md-inline">Gör</span>
             </Link>
             <a
               href={createWhatsAppMessage()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-success btn-sm"
+              className="btn btn-success btn-sm btn-shimmer"
               title="WhatsApp'tan Sor"
             >
-              <i className="bi bi-whatsapp"></i>
+              <i className="bi bi-whatsapp me-1"></i>
+              <span className="d-none d-md-inline">Sor</span>
             </a>
           </div>
         </div>
@@ -63,16 +65,17 @@ function ProductCard({ product }) {
           <div className="d-flex justify-content-between align-items-center">
             <Link
               to={`/products/${product.id}`}
-              className="btn btn-outline-burgundy btn-sm"
+              className="btn btn-outline-burgundy btn-sm btn-shimmer"
               onClick={handleLinkClick}
             >
+              <i className="bi bi-eye me-1"></i>
               Detayları Gör
             </Link>
             <a
               href={createWhatsAppMessage()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-burgundy btn-sm"
+              className="btn btn-burgundy btn-sm btn-shimmer"
             >
               <i className="bi bi-shop me-1"></i>
               Mağazada Gör

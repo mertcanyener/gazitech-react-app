@@ -123,13 +123,14 @@ function Products() {
               }
             </p>
             <button
-              className="btn btn-outline-burgundy"
+              className="btn btn-outline-burgundy btn-shimmer"
               onClick={() => {
                 setSearchTerm('');
                 setSelectedCategory('all');
                 handleScrollReset();
               }}
             >
+              <i className="bi bi-arrow-clockwise me-2"></i>
               Tüm Ürünleri Göster
             </button>
           </div>

@@ -53,7 +53,8 @@ function Contact() {
               </div>
               <div className="contact-info">
                 <h5>Telefonla Ara</h5>
-                <a href="tel:+905338448804" className="contact-link">
+                <a href="tel:+905338448804" className="btn btn-burgundy btn-sm btn-shimmer">
+                  <i className="bi bi-telephone me-2"></i>
                   +90 533 844 88 04
                 </a>
               </div>
@@ -70,8 +71,9 @@ function Contact() {
                   href="https://wa.me/905338448804"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="contact-link"
+                  className="btn btn-success btn-sm btn-shimmer"
                 >
+                  <i className="bi bi-whatsapp me-2"></i>
                   Hemen Mesaj Gönder
                 </a>
               </div>
